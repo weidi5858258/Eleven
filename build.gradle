@@ -1,0 +1,102 @@
+buildscript {
+    System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+    }
+}// buildscript
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs.add('-Xbootclasspath/p:\\libs\\services.jar')
+        }
+    }
+}
+
+apply plugin: 'com.android.application'
+
+///////////////////////////////////////The above parts do not modify///////////////////////////////////////
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.cyanogenmod.eleven"
+        minSdkVersion 23
+        targetSdkVersion 26
+        signingConfig signingConfigs.debug
+    }
+    packagingOptions {
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+    }
+    sourceSets {
+        main {
+            def folder = './'
+            def srcFolder = [folder + 'src']
+            def resFolder = [folder + 'res']
+            def libsFolder = [folder + 'libs']
+            def assetsFolder = [folder + 'assets']
+            def aidlFolder = [srcFolder, 'com/cyanogenmod/eleven']
+            def aidlFolder2 = [srcFolder, 'com/cyanogenmod/eleven/service']
+            def jniFolder = [srcFolder + 'jni']
+
+            manifest.srcFile file('./AndroidManifest.xml')
+            java.srcDirs = srcFolder
+            res.srcDirs = resFolder
+            jniLibs.srcDirs = libsFolder
+            assets.srcDirs = assetsFolder
+            aidl.srcDirs = aidlFolder
+            aidl.srcDirs += aidlFolder2
+            jni.srcDirs = jniFolder
+
+        }// main
+
+        debug.setRoot('build-types/debug')
+        // release.setRoot('build-types/release')
+    }// sourceSets
+
+    sourceSets.main.jni.srcDirs = []
+    sourceSets.main.jniLibs.srcDir 'libs'
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
+    productFlavors {
+    }
+}// android
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'lib')
+    compile project(':weidi_library')
+    // compile files('libs/xUtils-2.6.14.jar')
+    // provided files('libs/services.jar')
+    // compile 'com.android.support:appcompat-v7:21.0.3'
+    // compile 'com.android.support:recyclerview-v7:25.1.0'
+    // compile 'com.android.support:multidex:1.0.0'
+    // compile 'cn.jiguang:jpush:2.1.8'
+    // compile project(path: ':weidi_library')
+    // compile 'com.android.support:cardview-v7:26.1.0'
+    // compile 'com.android.support:support-v4:26.0.0-alpha1'
+    // compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
+    compile 'com.google.guava:guava:16.0.1'
+    compile 'com.android.support:palette-v7:26.1.0'
+    compile files('libs/android-support-v8-renderscript.jar')
+}
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+}
+
+
