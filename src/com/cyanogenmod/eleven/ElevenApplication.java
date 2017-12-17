@@ -13,10 +13,10 @@
 
 package com.cyanogenmod.eleven;
 
-import android.app.Application;
 import android.os.StrictMode;
 
 import com.cyanogenmod.eleven.cache.ImageCache;
+import com.weidi.application.WeidiApplication;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,7 +28,7 @@ import java.util.logging.Logger;
  *
  * @author Andrew Neal (andrewdneal@gmail.com)
  */
-public class ElevenApplication extends Application {
+public class ElevenApplication extends WeidiApplication {
     private static final boolean DEBUG = false;
 
     /**
@@ -36,6 +36,7 @@ public class ElevenApplication extends Application {
      */
     @Override
     public void onCreate() {
+        super.onCreate();
         // Enable strict mode logging
         enableStrictMode();
         // Turn off logging for jaudiotagger.

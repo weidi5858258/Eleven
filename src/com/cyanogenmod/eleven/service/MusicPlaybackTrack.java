@@ -24,6 +24,20 @@ import com.cyanogenmod.eleven.Config;
  * This is used by the music playback service to track the music tracks it is playing
  * It has extra meta data to determine where the track came from so that we can show the appropriate
  * song playing indicator
+ * openFile: path = content://media/external/audio/media/197148
+ * MusicPlaybackTrack{mId=197148, mSourceId=-1, mSourceType=NA, mSourcePosition=0}
+ *
+ MusicPlaybackTrack{mId=197119, mSourceId=-1, mSourceType=NA, mSourcePosition=0}
+ MusicPlaybackTrack{mId=197162, mSourceId=-1, mSourceType=NA, mSourcePosition=1}
+ MusicPlaybackTrack{mId=234385, mSourceId=-1, mSourceType=NA, mSourcePosition=2}
+ ......
+ MusicPlaybackTrack{mId=197198, mSourceId=-1, mSourceType=NA, mSourcePosition=1917}
+ MusicPlaybackTrack{mId=197235, mSourceId=-1, mSourceType=NA, mSourcePosition=1918}
+ MusicPlaybackTrack{mId=197179, mSourceId=-1, mSourceType=NA, mSourcePosition=1919}
+
+ 234409|/storage/2430-1702/BaiduNetdisk/music/缈熸儬姘?- 閾佺獥娉?mp3|
+ 缈熸儬姘?- 閾佺獥娉?mp3|19900257|audio/mpeg|1509799931|0|1509799930|
+ 閾佺獥娉聥Xr|497450|94||88|0||0|1|0|0|0|||94W 聼 聙 |杩熷織寮簗88聥Xr 197663025|閾佺獥娉?
  */
 public class MusicPlaybackTrack implements Parcelable {
     /**
@@ -38,6 +52,11 @@ public class MusicPlaybackTrack implements Parcelable {
 
     /**
      * Where was this track added from?  Artist/Album/Playlist
+     *
+     IdType.NA,(0)
+     IdType.Artist,(1)
+     IdType.Album,(2)
+     IdType.Playlist;(3)
      */
     public Config.IdType mSourceType;
 
@@ -107,5 +126,15 @@ public class MusicPlaybackTrack implements Parcelable {
         }
 
         return super.equals(o);
+    }
+
+    @Override
+    public String toString() {
+        return "MusicPlaybackTrack{" +
+                "mId=" + mId +
+                ", mSourceId=" + mSourceId +
+                ", mSourceType=" + mSourceType +
+                ", mSourcePosition=" + mSourcePosition +
+                '}';
     }
 }

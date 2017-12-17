@@ -21,13 +21,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 
 import com.cyanogenmod.eleven.MusicPlaybackService;
 import com.cyanogenmod.eleven.R;
 import com.cyanogenmod.eleven.ui.activities.HomeActivity;
-import com.cyanogenmod.eleven.utils.ApolloUtils;
 
 /**
  * 4x1 App-Widget
@@ -37,6 +37,7 @@ import com.cyanogenmod.eleven.utils.ApolloUtils;
 @SuppressLint("NewApi")
 public class AppWidgetSmall extends AppWidgetBase {
 
+    private static final String TAG = "AppWidgetSmall";
     public static final String CMDAPPWIDGETUPDATE = "app_widget_small_update";
 
     private static AppWidgetSmall mInstance;
@@ -118,6 +119,7 @@ public class AppWidgetSmall extends AppWidgetBase {
         final CharSequence artistName = service.getArtistName();
         final Bitmap bitmap = service.getAlbumArt(true).getBitmap();
 
+        Log.i(TAG, "trackName3: " + trackName);
         // Set the titles and artwork
         if (TextUtils.isEmpty(trackName) && TextUtils.isEmpty(artistName)) {
             appWidgetView.setViewVisibility(R.id.app_widget_small_info_container, View.INVISIBLE);

@@ -20,12 +20,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.cyanogenmod.eleven.MusicPlaybackService;
 import com.cyanogenmod.eleven.R;
 import com.cyanogenmod.eleven.ui.activities.HomeActivity;
-import com.cyanogenmod.eleven.utils.ApolloUtils;
 import com.cyanogenmod.eleven.widgets.RepeatButton;
 import com.cyanogenmod.eleven.widgets.ShuffleButton;
 
@@ -37,6 +37,7 @@ import com.cyanogenmod.eleven.widgets.ShuffleButton;
 @SuppressLint("NewApi")
 public class AppWidgetLargeAlternate extends AppWidgetBase {
 
+    private static final String TAG = "AppWidgetLargeAlternate";
     public static final String CMDAPPWIDGETUPDATE = "app_widget_large_alternate_update";
 
     private static AppWidgetLargeAlternate mInstance;
@@ -121,6 +122,7 @@ public class AppWidgetLargeAlternate extends AppWidgetBase {
         final CharSequence albumName = service.getAlbumName();
         final Bitmap bitmap = service.getAlbumArt(true).getBitmap();
 
+        Log.i(TAG, "trackName1: " + trackName);
         // Set the titles and artwork
         appWidgetView.setTextViewText(R.id.app_widget_large_alternate_line_one, trackName);
         appWidgetView.setTextViewText(R.id.app_widget_large_alternate_line_two, artistName);

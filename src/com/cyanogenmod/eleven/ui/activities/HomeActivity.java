@@ -37,6 +37,7 @@ import android.view.MenuItem;
 import android.view.Window;
 
 import com.cyanogenmod.eleven.Config;
+import com.cyanogenmod.eleven.MusicPlaybackService;
 import com.cyanogenmod.eleven.R;
 import com.cyanogenmod.eleven.cache.ImageFetcher;
 import com.cyanogenmod.eleven.ui.fragments.AlbumDetailFragment;
@@ -88,6 +89,7 @@ public class HomeActivity extends SlidingPanelActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        startService(new Intent(this, MusicPlaybackService.class));
 
         mSavedInstanceState = savedInstanceState;
 

@@ -232,9 +232,9 @@ public abstract class BaseActivity extends FragmentActivity implements
         // Track changes
         filter.addAction(MusicPlaybackService.META_CHANGED);
         // Update a list, probably the playlist fragment's
-        filter.addAction(MusicPlaybackService.REFRESH);
+        filter.addAction(MusicPlaybackService.REFRESHING);
         // If a playlist has changed, notify us
-        filter.addAction(MusicPlaybackService.PLAYLIST_CHANGED);
+        filter.addAction(MusicPlaybackService.PLAYLIST_CHANGE);
         // If there is an error playing a track
         filter.addAction(MusicPlaybackService.TRACK_ERROR);
         registerReceiver(mPlaybackStatus, filter);

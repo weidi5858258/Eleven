@@ -21,10 +21,6 @@
     android:versionCode="3"
     android:versionName="3.0" >
 
-    <uses-sdk
-        android:minSdkVersion="24"
-        android:targetSdkVersion="24" />
-
     <!-- Used for caching and creating new playlists -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- Used to check for a network connection -->
@@ -163,6 +159,9 @@
                 <data android:mimeType="application/itunes" />
             </intent-filter>
         </activity>
+
+        <service android:name=".MusicPlaybackService"/>
+
         <!-- 4x1 App Widget -->
         <receiver
             android:name="com.cyanogenmod.eleven.appwidgets.AppWidgetSmall"
@@ -216,10 +215,6 @@
             </intent-filter>
         </receiver>
         <!-- Music service -->
-        <service
-            android:name="com.cyanogenmod.eleven.MusicPlaybackService"
-            android:label="@string/app_name"
-            android:process=":main" />
     </application>
 
 </manifest>

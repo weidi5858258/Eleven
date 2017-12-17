@@ -18,3 +18,10 @@ MultiPlayer中又是调用的MediaPlayer中有关播放，暂停的方法。
 如果不指定SessionId，将会自动生成一个SessionId，AudioEffect会将该SessionId与新创建的AudioTrack对象关联起来。
 
 MTP主机已停止运行
+
+RecentStore
+SongPlayCount
+MusicPlaybackState
+ImageFetcher
+MediaSession
+SrtManager

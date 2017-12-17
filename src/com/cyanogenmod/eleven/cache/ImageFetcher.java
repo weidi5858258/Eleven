@@ -20,7 +20,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.widget.ImageView;
 import com.cyanogenmod.eleven.Config;
-import com.cyanogenmod.eleven.MusicPlaybackService;
 import com.cyanogenmod.eleven.cache.PlaylistWorkerTask.PlaylistWorkerType;
 import com.cyanogenmod.eleven.utils.BitmapWithColors;
 import com.cyanogenmod.eleven.utils.MusicUtils;

@@ -60,11 +60,9 @@ import com.cyanogenmod.eleven.utils.ApolloUtils;
 import com.cyanogenmod.eleven.utils.MusicUtils;
 import com.cyanogenmod.eleven.utils.NavUtils;
 import com.cyanogenmod.eleven.utils.PreferenceUtils;
-import com.cyanogenmod.eleven.widgets.BrowseButton;
 import com.cyanogenmod.eleven.widgets.LoadingEmptyContainer;
 import com.cyanogenmod.eleven.widgets.NoResultsContainer;
 import com.cyanogenmod.eleven.widgets.PlayPauseProgressButton;
-import com.cyanogenmod.eleven.widgets.QueueButton;
 import com.cyanogenmod.eleven.widgets.RepeatButton;
 import com.cyanogenmod.eleven.widgets.RepeatingImageButton;
 import com.cyanogenmod.eleven.widgets.ShuffleButton;
@@ -223,7 +221,7 @@ public class AudioPlayerFragment extends Fragment implements ServiceConnection {
         // Track changes
         filter.addAction(MusicPlaybackService.META_CHANGED);
         // Update a list, probably the playlist fragment's
-        filter.addAction(MusicPlaybackService.REFRESH);
+        filter.addAction(MusicPlaybackService.REFRESHING);
         // Listen to changes to the entire queue
         filter.addAction(MusicPlaybackService.QUEUE_CHANGED);
         // Listen for lyrics text for the audio track

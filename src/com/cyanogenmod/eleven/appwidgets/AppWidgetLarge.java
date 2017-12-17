@@ -20,12 +20,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.cyanogenmod.eleven.MusicPlaybackService;
 import com.cyanogenmod.eleven.R;
 import com.cyanogenmod.eleven.ui.activities.HomeActivity;
-import com.cyanogenmod.eleven.utils.ApolloUtils;
 
 /**
  * 4x2 App-Widget
@@ -35,6 +35,7 @@ import com.cyanogenmod.eleven.utils.ApolloUtils;
 @SuppressLint("NewApi")
 public class AppWidgetLarge extends AppWidgetBase {
 
+    private static final String TAG = "AppWidgetLarge";
     public static final String CMDAPPWIDGETUPDATE = "app_widget_large_update";
 
     private static AppWidgetLarge mInstance;
@@ -108,7 +109,8 @@ public class AppWidgetLarge extends AppWidgetBase {
      * Update all active widget instances by pushing changes
      */
     public void performUpdate(final MusicPlaybackService service, final int[] appWidgetIds) {
-        final RemoteViews appWidgetView = new RemoteViews(service.getPackageName(),
+        final RemoteViews appWidgetView = new RemoteViews(
+                service.getPackageName(),
                 R.layout.app_widget_large);
 
         final CharSequence trackName = service.getTrackName();
@@ -116,6 +118,7 @@ public class AppWidgetLarge extends AppWidgetBase {
         final CharSequence albumName = service.getAlbumName();
         final Bitmap bitmap = service.getAlbumArt(true).getBitmap();
 
+        Log.i(TAG, "trackName2: " + trackName);
         // Set the titles and artwork
         appWidgetView.setTextViewText(R.id.app_widget_large_line_one, trackName);
         appWidgetView.setTextViewText(R.id.app_widget_large_line_two, artistName);
